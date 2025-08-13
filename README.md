@@ -13,9 +13,11 @@
 
 **Netflix Session Access** es una extensión de Chrome diseñada para usuarios finales que necesitan acceder a Netflix gratis usando códigos de sesión temporales generados por la extensión complementaria **Netflix Session Creator**
 
+
 ### 🎯 Objetivo Principal
 
 Permitir a los usuarios ingresar códigos de sesión para acceder a Netflix gratis sin necesidad de iniciar sesión con credenciales, proporcionando una forma segura y temporal de compartir acceso.
+
 
 ## ✨ Características
 
@@ -26,6 +28,7 @@ Permitir a los usuarios ingresar códigos de sesión para acceder a Netflix grat
 - 🖱️ **Mantenimiento de sesión**: Simula actividad humana para mantener la sesión activa
 - 📱 **Interfaz intuitiva**: Diseño simple y fácil de usar
 - 🔒 **Seguridad integrada**: Verificación de expiración de sesiones
+
 
 ## 🚀 Instalación
 
@@ -47,6 +50,7 @@ Permitir a los usuarios ingresar códigos de sesión para acceder a Netflix grat
 
 6. **Verifica la instalación**: El icono de la extensión aparecerá en la barra de herramientas, haz quick en la pieza de puzzle para fijar extensión y que sea visible en todo momento.
 
+
 ## 📖 Uso
 
 ### Pasos para Usar Netflix Session Access
@@ -66,6 +70,7 @@ Permitir a los usuarios ingresar códigos de sesión para acceder a Netflix grat
 5. **Disfruta de Netflix**:
    - Se abrirá/recargará automáticamente la página de Netflix
    - Verás un contador con el tiempo restante de tu sesión
+
 
 ### Características Durante la Sesión
 
