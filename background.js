@@ -26,19 +26,19 @@ async function restoreCookies(encryptedData) {
     console.log("Intentando decodificar datos de sesión...");
     const sessionData = JSON.parse(atob(encryptedData));
     console.log("Datos de sesión decodificados correctamente");
-    
+
     // Verificar si la sesión ha expirado
     if (Date.now() > sessionData.expiresAt) {
       throw new Error('La sesión ha expirado');
     }
-    
+
     // Guardar tiempo de expiración en memoria y en chrome.storage
     saveSessionExpiry(sessionData.expiresAt);
-    
+
     console.log("La sesión no ha expirado");
     const cookies = sessionData.cookies.split('; ');
     console.log(`Restaurando ${cookies.length} cookies...`);
-    
+
     let restoredCookies = 0;
     for (const cookie of cookies) {
       const [name, value] = cookie.split('=');
@@ -57,7 +57,7 @@ async function restoreCookies(encryptedData) {
         console.error('Error restaurando cookie:', name, e);
       }
     }
-    
+
     console.log(`Se restauraron ${restoredCookies} de ${cookies.length} cookies`);
     return restoredCookies > 0;
   } catch (e) {
@@ -70,28 +70,28 @@ async function restoreCookies(encryptedData) {
 async function restorePermanentSession(sessionId, accessKey, encryptedData) {
   try {
     console.log("Iniciando restauración de sesión...");
-    
+
     // Restaurar cookies
     const cookiesRestored = await restoreCookies(encryptedData);
-    
+
     if (!cookiesRestored) {
       throw new Error('No se pudieron restaurar las cookies');
     }
-    
+
     console.log("Cookies restauradas correctamente");
-    
+
     // Obtener la ventana actual
     const currentWindow = await chrome.windows.getCurrent();
     console.log("ID de ventana actual:", currentWindow.id);
-    
+
     // Obtener todas las pestañas en la ventana actual
     const allTabs = await chrome.tabs.query({ windowId: currentWindow.id });
     console.log(`Encontradas ${allTabs.length} pestañas en la ventana actual`);
-    
+
     // Filtrar solo las pestañas de Netflix
     const netflixTabs = allTabs.filter(tab => tab.url && tab.url.includes('netflix.com'));
     console.log(`Encontradas ${netflixTabs.length} pestañas de Netflix en la ventana actual`);
-    
+
     if (netflixTabs.length > 0) {
       // Recargar todas las pestañas de Netflix en la ventana actual
       for (const tab of netflixTabs) {
@@ -101,13 +101,13 @@ async function restorePermanentSession(sessionId, accessKey, encryptedData) {
     } else {
       // Si no hay pestañas de Netflix en la ventana actual, abrir una nueva
       console.log("No hay pestañas de Netflix en la ventana actual, abriendo una nueva...");
-      await chrome.tabs.create({ 
+      await chrome.tabs.create({
         url: "https://www.netflix.com",
         windowId: currentWindow.id,
         active: true
       });
     }
-    
+
     return true;
   } catch (error) {
     console.error('Error en restauración:', error);
@@ -120,7 +120,7 @@ setInterval(() => {
   if (sessionExpiryTime && Date.now() > sessionExpiryTime) {
     console.log('La sesión ha expirado');
     saveSessionExpiry(null);
-    
+
     // Notificar al popup para resetear el campo
     try {
       chrome.runtime.sendMessage({action: 'sessionExpired'});
@@ -144,7 +144,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       });
     return true;
   }
-  
+
   if (request.action === 'getSessionExpiry') {
     sendResponse({ expiryTime: sessionExpiryTime });
     return true;

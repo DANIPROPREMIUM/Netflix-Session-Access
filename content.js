@@ -18,7 +18,7 @@
   footer.style.cursor = 'pointer';
   footer.textContent = 'BY DANIPRO PREMIUM';
   document.body.appendChild(footer);
-
+  
   // Crear contador
   const countdown = document.createElement('div');
   countdown.id = 'session-countdown';
@@ -33,7 +33,7 @@
   countdown.style.zIndex = '9999';
   countdown.style.fontWeight = 'bold';
   document.body.appendChild(countdown);
-
+  
   // Obtener tiempo de expiración de la sesión directamente desde chrome.storage
   function getSessionExpiry() {
     return new Promise((resolve) => {
@@ -46,7 +46,7 @@
       }
     });
   }
-
+  
   // Actualizar contador con manejo de errores
   async function updateCountdown() {
     try {
@@ -56,29 +56,28 @@
         countdown.textContent = 'Sesión no disponible';
         return;
       }
-
+      
       const now = Date.now();
       const timeLeft = expiryTime - now;
-
+      
       if (timeLeft <= 0) {
         countdown.textContent = 'Sesión expirada';
         return;
       }
-
+      
       const hours = Math.floor(timeLeft / (1000 * 60 * 60));
       const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
       countdown.textContent = `Sesión expira en: ${hours}h ${minutes}m ${seconds}s`;
     } catch (error) {
       countdown.textContent = 'Error en contador';
     }
   }
-
+  
   // Actualizar contador cada segundo
   setInterval(updateCountdown, 1000);
   updateCountdown();
-
+  
   // Prevenir cierre de sesión
   preventLogout();
 })();
@@ -91,7 +90,7 @@ function preventLogout() {
     'a[href*="SignOut"]',
     '.signout-link'
   ];
-
+  
   function blockSignOutButtons() {
     try {
       signOutSelectors.forEach(selector => {
@@ -112,12 +111,12 @@ function preventLogout() {
       console.error("Error al bloquear botones:", error.message);
     }
   }
-
+  
   function showBlockedMessage() {
     try {
       const existingMessages = document.querySelectorAll('.blocked-message');
       existingMessages.forEach(msg => msg.remove());
-
+      
       const message = document.createElement('div');
       message.className = 'blocked-message';
       message.style.cssText = `
@@ -135,7 +134,7 @@ function preventLogout() {
       `;
       message.textContent = 'No está permitido cerrar esta sesión';
       document.body.appendChild(message);
-
+      
       setTimeout(() => {
         message.style.opacity = '0';
         message.style.transition = 'opacity 0.5s ease';
@@ -149,10 +148,10 @@ function preventLogout() {
       console.error("Error al mostrar mensaje:", error.message);
     }
   }
-
+  
   // Bloquear botones existentes
   blockSignOutButtons();
-
+  
   // Observador para nuevos botones
   try {
     const observer = new MutationObserver((mutations) => {
@@ -162,7 +161,7 @@ function preventLogout() {
         }
       });
     });
-
+    
     observer.observe(document.body, {
       childList: true,
       subtree: true
@@ -170,13 +169,12 @@ function preventLogout() {
   } catch (error) {
     console.error("Error al crear observador:", error.message);
   }
-
+  
   // Simular actividad humana para mantener la sesión activa
   try {
     setInterval(() => {
       const x = Math.random() * window.innerWidth;
       const y = Math.random() * window.innerHeight;
-
       const event = new MouseEvent('mousemove', {
         view: window,
         bubbles: true,
@@ -184,7 +182,6 @@ function preventLogout() {
         clientX: x,
         clientY: y
       });
-
       document.dispatchEvent(event);
     }, 300000 + Math.random() * 300000); // Entre 5 y 10 minutos
   } catch (error) {
