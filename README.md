@@ -46,7 +46,7 @@ Permitir a los usuarios ingresar códigos de sesión para acceder a Netflix grat
 
 4. **Activa el Modo de desarrollador** (toggle en la esquina superior derecha en el caso de Chrome)
 
-5. **Haz clic en "Cargar descomprimida"** y selecciona la carpeta `Netflix-Session-Access`
+5. **Haz clic en "Cargar descomprimida"** y selecciona la carpeta `Netflix-Session-Access`  **(SIN el título acabado en main)**
 
 6. **Verifica la instalación**: El icono de la extensión aparecerá en la barra de herramientas, haz quick en la pieza de puzzle para fijar extensión y que sea visible en todo momento.
 
