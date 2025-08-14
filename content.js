@@ -62,6 +62,8 @@
       
       if (timeLeft <= 0) {
         countdown.textContent = 'Sesión expirada';
+        // Si la sesión ha expirado, cerrar sesión automáticamente
+        endSession();
         return;
       }
       
@@ -71,6 +73,28 @@
       countdown.textContent = `Sesión expira en: ${hours}h ${minutes}m ${seconds}s`;
     } catch (error) {
       countdown.textContent = 'Error en contador';
+    }
+  }
+  
+  // Función para cerrar sesión automáticamente
+  function endSession() {
+    try {
+      // Eliminar todas las cookies de Netflix
+      const cookies = document.cookie.split(';');
+      
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf('=');
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        
+        // Eliminar cookie estableciendo una fecha de expiración en el pasado
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.netflix.com;';
+      }
+      
+      // Recargar la página para mostrar la pantalla de inicio de sesión
+      window.location.reload();
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
     }
   }
   
