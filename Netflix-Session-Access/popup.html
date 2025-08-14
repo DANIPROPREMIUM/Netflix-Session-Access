@@ -9,7 +9,7 @@ body {
   width: 300px;
   padding: 15px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  background: #000000; /* Fondo totalmente negro */
   color: #ffffff;
   overflow: hidden;
 }
@@ -29,21 +29,30 @@ header {
 .netflix-logo {
   font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 32px;
   color: #E50914;
   letter-spacing: -1px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #E50914, 0 0 10px #E50914;
+  }
+  to {
+    text-shadow: 0 0 10px #E50914, 0 0 20px #E50914;
+  }
 }
 h1 {
   text-align: center;
   color: #ffffff;
   margin-bottom: 25px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
 }
 .button {
   border: none;
-  padding: 12px;
+  padding: 14px;
   margin: 8px 0;
   width: 100%;
   cursor: pointer;
@@ -58,11 +67,11 @@ h1 {
 .button-green {
   background: linear-gradient(135deg, #E50914, #b20710);
   color: white;
-  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5);
 }
 .button-green:hover {
   background: linear-gradient(135deg, #f40612, #d10810);
-  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.7);
   transform: translateY(-2px);
 }
 .button-green:active {
@@ -70,7 +79,7 @@ h1 {
   box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
 }
 .button-green:disabled {
-  background: #555555;
+  background: #333333;
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
@@ -85,6 +94,18 @@ h1 {
   margin-left: 8px;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(229, 9, 20, 0.3);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .button::before {
   content: '';
@@ -93,28 +114,45 @@ h1 {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
   transition: left 0.5s;
 }
 .button:hover::before {
   left: 100%;
 }
+.input-wrapper {
+  position: relative;
+  margin-bottom: 8px;
+}
 input {
   width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border: 2px solid #444444;
+  padding: 14px;
+  border: 2px solid #333333;
   border-radius: 8px;
-  background-color: #333333;
+  background-color: #111111;
   color: #ffffff;
   box-sizing: border-box;
   font-size: 14px;
-  transition: border-color 0.3s;
+  transition: all 0.3s;
 }
 input:focus {
   outline: none;
   border-color: #E50914;
-  background-color: #444444;
+  background-color: #1a1a1a;
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.3);
+}
+.input-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #E50914;
+  transition: width 0.3s;
+}
+.input-wrapper:focus-within::after {
+  width: 100%;
 }
 h2 {
   color: #E50914;
@@ -127,7 +165,7 @@ h2 {
   text-align: center;
   margin-top: 20px;
   padding-top: 15px;
-  border-top: 1px solid #444444;
+  border-top: 1px solid #333333;
   font-size: 12px;
   color: #b3b3b3;
 }
@@ -135,16 +173,55 @@ h2 {
   color: #E50914;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s;
 }
 .credit a:hover {
+  color: #ff0a16;
   text-decoration: underline;
 }
 .section {
   margin-bottom: 25px;
-  background: #333333;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: #111111;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid #222222;
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #E50914, transparent);
+}
+.decorative-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 60px;
+  color: rgba(229, 9, 20, 0.1);
+  transform: rotate(15deg);
+  z-index: 0;
+}
+/* Efecto de partículas de fondo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, #E50914 1px, transparent 1px),
+    radial-gradient(circle, #E50914 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px;
+  background-position: 0 0, 25px 25px;
+  opacity: 0.05;
+  z-index: -1;
 }
 </style>
 </head>
@@ -158,8 +235,11 @@ h2 {
   </header>
   
   <div class="section">
+    <i class="fas fa-play decorative-icon"></i>
     <h2>Entrar a Netflix</h2>
-    <input type="text" id="full-code-input" placeholder="Introducir ID de acceso" autocomplete="off">
+    <div class="input-wrapper">
+      <input type="text" id="full-code-input" placeholder="Introducir ID de acceso" autocomplete="off">
+    </div>
     <button id="restore-session" class="button button-green">
       Acceso a <span class="netflix-badge">Netflix</span>
     </button>
