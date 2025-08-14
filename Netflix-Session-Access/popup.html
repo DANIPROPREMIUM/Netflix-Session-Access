@@ -3,136 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <title>Netflix Session Access</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 body {
-width: 300px;
-padding: 10px;
-font-family: Arial, sans-serif;
-background-color: #ffffff;
-color: #333333;
+  width: 300px;
+  padding: 15px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  color: #ffffff;
+  overflow: hidden;
 }
-.button {
-border: none;
-padding: 12px;
-margin: 8px 0;
-width: 100%;
-cursor: pointer;
-border-radius: 8px;
-font-weight: bold;
-transition: all 0.3s ease;
-text-transform: uppercase;
-letter-spacing: 1px;
-position: relative;
-overflow: hidden;
+.container {
+  width: 100%;
 }
-.button-green {
-background: linear-gradient(135deg, #4CAF50, #2E7D32);
-color: white;
-box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+header {
+  text-align: center;
+  margin-bottom: 25px;
 }
-.button-green:hover {
-background: linear-gradient(135deg, #66BB6A, #388E3C);
-box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
-transform: translateY(-2px);
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
 }
-.button-green:active {
-transform: translateY(1px);
-box-shadow: 0 2px 10px rgba(76, 175, 80, 0.4);
-}
-.button-green:disabled {
-background: #cccccc;
-cursor: not-allowed;
-box-shadow: none;
-transform: none;
-}
-.netflix-badge {
-display: inline-block;
-background: #E50914;
-color: white;
-padding: 4px 8px;
-border-radius: 20px;
-font-size: 14px;
-margin-left: 8px;
-font-weight: bold;
-box-shadow: 0 2px 5px rgba(229, 9, 20, 0.3);
-}
-.button::before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-transition: left 0.5s;
-}
-.button:hover::before {
-left: 100%;
-}
-input {
-width: 100%;
-padding: 12px;
-margin: 8px 0;
-border: 2px solid #e0e0e0;
-border-radius: 8px;
-background-color: #f9f9f9;
-color: #333333;
-box-sizing: border-box;
-font-size: 14px;
-transition: border-color 0.3s;
-}
-input:focus {
-outline: none;
-border-color: #4CAF50;
-background-color: #ffffff;
+.netflix-logo {
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #E50914;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 h1 {
-text-align: center;
-color: #E50914;
-margin-bottom: 25px;
-font-size: 24px;
-text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.button {
+  border: none;
+  padding: 12px;
+  margin: 8px 0;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+.button-green {
+  background: linear-gradient(135deg, #E50914, #b20710);
+  color: white;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+.button-green:hover {
+  background: linear-gradient(135deg, #f40612, #d10810);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+  transform: translateY(-2px);
+}
+.button-green:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
+}
+.button-green:disabled {
+  background: #555555;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+.netflix-badge {
+  display: inline-block;
+  background: #E50914;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-left: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(229, 9, 20, 0.3);
+}
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+.button:hover::before {
+  left: 100%;
+}
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 2px solid #444444;
+  border-radius: 8px;
+  background-color: #333333;
+  color: #ffffff;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+input:focus {
+  outline: none;
+  border-color: #E50914;
+  background-color: #444444;
 }
 h2 {
-color: #E50914;
-margin-top: 20px;
-margin-bottom: 15px;
-font-size: 18px;
-font-weight: bold;
+  color: #E50914;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .credit {
-text-align: center;
-margin-top: 20px;
-padding-top: 15px;
-border-top: 1px solid #e0e0e0;
-font-size: 12px;
-color: #666666;
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #444444;
+  font-size: 12px;
+  color: #b3b3b3;
 }
 .credit a {
-color: #E50914;
-text-decoration: none;
-font-weight: bold;
+  color: #E50914;
+  text-decoration: none;
+  font-weight: bold;
 }
 .credit a:hover {
-text-decoration: underline;
+  text-decoration: underline;
 }
 .section {
-margin-bottom: 25px;
+  margin-bottom: 25px;
+  background: #333333;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 </style>
 </head>
 <body>
-<h1>Netflix Session Access</h1>
-<div class="section">
-<h2>Entrar a Netflix</h2>
-<input type="text" id="full-code-input" placeholder="Introducir ID de acceso" autocomplete="off">
-<button id="restore-session" class="button button-green">
-  Acceso a <span class="netflix-badge">Netflix</span>
-</button>
-</div>
-<div class="credit">
-BY DANIPRO PREMIUM |
-<a href="https://premium-id.jimdosite.com" target="_blank">premium-id.jimdosite.com</a>
+<div class="container">
+  <header>
+    <div class="logo">
+      <div class="netflix-logo">NETFLIX</div>
+    </div>
+    <h1>Session Access</h1>
+  </header>
+  
+  <div class="section">
+    <h2>Entrar a Netflix</h2>
+    <input type="text" id="full-code-input" placeholder="Introducir ID de acceso" autocomplete="off">
+    <button id="restore-session" class="button button-green">
+      Acceso a <span class="netflix-badge">Netflix</span>
+    </button>
+  </div>
+  
+  <div class="credit">
+    BY DANIPRO PREMIUM |
+    <a href="https://premium-id.jimdosite.com" target="_blank">premium-id.jimdosite.com</a>
+  </div>
 </div>
 <script src="popup.js"></script>
 </body>
