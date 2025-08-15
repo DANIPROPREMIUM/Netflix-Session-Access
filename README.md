@@ -1,4 +1,4 @@
-# Netflix Session Access v5.0 
+# Netflix Session Access v3.0 
 
 🚀 **¡VERSIÓN YA DISPONIBLE!** 🚀
 
