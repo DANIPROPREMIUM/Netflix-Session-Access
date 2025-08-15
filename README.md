@@ -1,14 +1,12 @@
 # Netflix Session Access v5.0 
 
-🚀 **¡VERSIÓN FINAL YA DISPONIBLE!** 🚀
+🚀 **¡VERSIÓN YA DISPONIBLE!** 🚀
 
 Netflix Session Access v5.0 ha sido lanzada con importantes mejoras:
 
 ✅ Más rápida
 ✅ Sesiones más estables
 ✅ Compatible con los nuevos códigos 🆔
-
-💡 Solo la 5.0 funcionará con nuevos códigos que se darán a partir de ahora.
 ---
 *Desarrollado por Danipro Premium*
 
