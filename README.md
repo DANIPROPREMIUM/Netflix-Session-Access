@@ -2,7 +2,7 @@
 
 🚀 **¡NUEVA VERSIÓN DISPONIBLE!** 🚀
 
-Netflix Session Access v3.0 ha sido lanzada con importantes mejoras:
+Netflix Session Access v5.0 ha sido lanzada con importantes mejoras:
 
 ✅ Notable mejoría en la experiencia visual  
 ✅ Rendimiento mejorado - Más rápido y estable
