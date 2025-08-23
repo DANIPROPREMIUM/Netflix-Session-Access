@@ -1,8 +1,8 @@
-# Netflix Session Access v3.0 
+# Netflix Session Access v5.0 BETA TESTER
 
 🚀 **¡VERSIÓN YA DISPONIBLE!** 🚀
 
-Netflix Session Access v3.0 ha sido lanzada con importantes mejoras:
+Netflix Session Access v5.0 ha sido lanzada con importantes mejoras:
 
 ✅ Más rápida
 ✅ Sesiones más estables
@@ -21,7 +21,7 @@ Netflix Session Access v3.0 ha sido lanzada con importantes mejoras:
 
 ## 📖 Sobre el Proyecto
 
-**Netflix Session Access** es una extensión de Chrome diseñada para usuarios finales que necesitan acceder a Netflix gratis usando códigos de sesión temporales generados por la extensión complementaria **Netflix Session Creator**
+**Netflix Session Access** es una extensión exclusiva para Chrome, diseñada para acceder a Netflix gratis usando códigos de sesión temporales generados por la extensión complementaria **Netflix Session Creator**
 
 
 ### 🎯 Objetivo Principal
@@ -44,7 +44,7 @@ Permitir a los usuarios ingresar códigos de sesión para acceder a Netflix grat
 
 ### Requisitos Previos
 
-- Google Chrome o navegadores basados en chromium
+- Google Chrome, solo funciona en dicho navegador.
 - Código de sesión válido generado por Netflix Session Creator
 
 ### Pasos de Instalación
@@ -52,7 +52,7 @@ Permitir a los usuarios ingresar códigos de sesión para acceder a Netflix grat
 1. **Descarga el archivo ZIP y pones la carpeta fuera del ZIP**:
 2. (https://github.com/DANIPROPREMIUM/Netflix-Session-Access/archive/refs/heads/main.zip)
 
-3. **Abre Chrome, Edge o navegadores basados en Chrome, copia y pega en la barra de búsqueda**: `chrome://extensions/`
+3. **Abre Chrome, copia y pega en la barra de búsqueda**: `chrome://extensions/`
 
 4. **Activa el Modo de desarrollador** (toggle en la esquina superior derecha en el caso de Chrome)
 
